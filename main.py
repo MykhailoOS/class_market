@@ -20,14 +20,18 @@ class Cart:
     def __init__(self, username):
         self.username = username
         self.in_cart = {}
-
+        self.result_cart = []
     def add_items(self, item: Product):
         if isinstance(item, Product) and item not in self.in_cart:
                 self.in_cart[item.product_name] = item.price
+                find_price = self.in_cart.get(item.price)
+                self.result_cart.append(find_price)
+
+
 
 
     def __str__(self):
-        return f"покупець= {self.username}\nтовар= {self.in_cart}\n"
+        return f"покупець= {self.username}\nтовар= {self.in_cart}\nсума всіх заказів= {self.result_cart}"
 
 mrgr = Cart("Petya")
 mrgr.add_items(Product("Musly", "25", "lololo"))
